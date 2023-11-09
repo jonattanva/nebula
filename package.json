@@ -1,0 +1,24 @@
+{
+  "name": "nebula",
+  "version": "0.0.1",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "prettier --check . && eslint ."
+  },
+  "devDependencies": {
+    "esbuild": "~0.19.5",
+    "eslint": "~8.53.0",
+    "eslint-config-prettier": "~9.0.0",
+    "eslint-plugin-jsdoc": "~46.8.2",
+    "eslint-plugin-prettier": "~5.0.1",
+    "prettier": "~3.0.3",
+    "rimraf": "~5.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonattanva/nebula.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

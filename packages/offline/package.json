@@ -1,0 +1,12 @@
+{
+  "name": "nebula-offline",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "bun run clean && bun esbuild.js",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "nanoid": "~5.0.3"
+  }
+}
