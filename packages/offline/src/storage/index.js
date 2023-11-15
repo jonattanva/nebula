@@ -1,3 +1,5 @@
+import { READ_WRITE, READONLY, SYNCHRONIZED, QUEUES } from '../constants.js';
+
 /**
  * @template T
  * @param {name} name
@@ -48,25 +50,27 @@ const getConnection = (name, version = 1) => {
  */
 const save = (name, store, value, version) => {
     return new Promise((resolve, reject) => {
-        query(name, store, READ_WRITE, version).then((objectStore) => {
-            const request = objectStore.get(value.key);
+        query(name, store, READ_WRITE, version)
+            .then((objectStore) => {
+                const request = objectStore.get(value.$$key);
 
-            request.onsuccess = () => {
-                const result = objectStore.put(value);
-                result.onsuccess = () => {
-                    resolve(value);
+                request.onsuccess = () => {
+                    const result = objectStore.put(value);
+                    result.onsuccess = () => {
+                        resolve(value);
+                    };
+                    result.onerror = reject;
                 };
-                result.onerror = reject;
-            };
 
-            request.onerror = () => {
-                const result = objectStore.add(value);
-                result.onsuccess = () => {
-                    resolve(value);
+                request.onerror = () => {
+                    const result = objectStore.add(value);
+                    result.onsuccess = () => {
+                        resolve(value);
+                    };
+                    result.onerror = reject;
                 };
-                result.onerror = reject;
-            };
-        });
+            })
+            .catch(reject);
     });
 };
 
@@ -145,6 +149,10 @@ const open = (name, version) => {
         request.error = (event) => {
             reject(event);
         };
+
+        request.onupgradeneeded = (event) => {
+            upgrade(event.target);
+        };
     });
 };
 
@@ -208,7 +216,21 @@ const isSupport = () => {
     return typeof window !== 'undefined' && 'indexedDB' in window;
 };
 
-const READONLY = 'readonly';
-const READ_WRITE = 'readwrite';
+/**
+ * @param {IDBDatabase} database
+ *          The database connection
+ * @returns {void}
+ */
+const upgrade = (database) => {
+    if (!hasObjectStoreNames(database, QUEUES)) {
+        const objectStore = database.createObjectStore(QUEUES, {
+            keyPath: 'key'
+        });
+
+        objectStore.createIndex(SYNCHRONIZED, SYNCHRONIZED, {
+            unique: false
+        });
+    }
+};
 
 export { getConnection };

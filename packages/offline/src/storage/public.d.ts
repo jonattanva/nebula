@@ -1,11 +1,6 @@
 export type Entity = {
-    key: string;
+    $$key: string;
 };
-
-export interface Connection<T extends Entity> {
-    set(store: string, value: T): void;
-    select(): void;
-}
 
 export type Range =
     | {
@@ -18,3 +13,8 @@ export type Query = {
     range?: Range;
     count?: number;
 };
+
+export interface Connection<T extends Entity> {
+    save(store: string, value: T): Promise<T>;
+    select(store: string, query: Query): Promise<T[]>;
+}

@@ -3,3 +3,5 @@ node_modules
 packages/**/dist
 packages/**/esbuild.js
 packages/**/node_modules
+
+playwright.config.js
