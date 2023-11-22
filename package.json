@@ -3,16 +3,17 @@
   "version": "0.0.1",
   "scripts": {
     "format": "prettier --write .",
-    "lint": "prettier --check . && eslint ."
+    "lint": "prettier --check . && eslint .",
+    "test:e2e": "npx playwright test"
   },
   "workspaces": [
     "e2e/site",
     "packages/*"
   ],
   "devDependencies": {
-    "@playwright/test": "~1.39.0",
-    "esbuild": "~0.19.5",
-    "eslint": "~8.53.0",
+    "@playwright/test": "~1.40.0",
+    "esbuild": "~0.19.7",
+    "eslint": "~8.54.0",
     "eslint-config-prettier": "~9.0.0",
     "eslint-plugin-jsdoc": "~46.9.0",
     "eslint-plugin-prettier": "~5.0.1",
@@ -22,5 +23,13 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jonattanva/nebula.git"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./offline": {
+      "module": "./packages/offline/dist/index.esm.js",
+      "import": "./packages/offline/dist/index.cjs.mjs",
+      "default": "./packages/offline/dist/index.cjs.js"
+    }
   }
 }

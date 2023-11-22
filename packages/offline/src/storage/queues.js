@@ -1,10 +1,9 @@
-import seed from '../utils/seed.js';
 import { QUEUES } from '../constants.js';
 import { getConnection } from './index.js';
+import { seed } from 'nebula-core';
 
 const getDispatch = () => {
     const connection = getConnection('demo');
-
     return {
         queue: function (input, init) {
             return push(

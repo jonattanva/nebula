@@ -3,6 +3,6 @@ import { nanoid } from 'nanoid';
 /**
  * @returns {string}
  */
-export function generate() {
+export function seed() {
     return nanoid();
 }

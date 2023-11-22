@@ -2,6 +2,7 @@ node_modules
 
 packages/**/dist
 packages/**/esbuild.js
-packages/**/node_modules
+
+e2e/site
 
 playwright.config.js
