@@ -13,10 +13,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache-dependency-path: '**/pnpm-lock.yaml'
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
       - uses: actions/cache@v3
         with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-pnpm-store-
       - run: pnpm install --frozen-lockfile
