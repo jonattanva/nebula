@@ -78,6 +78,7 @@ export default function Page() {
                     disabled={loading}
                     label="First name"
                     name="first-name"
+                    testid="first-name"
                     type="text"
                     {...name}
                 />
@@ -86,6 +87,7 @@ export default function Page() {
                     disabled={loading}
                     label="Last name"
                     name="last-name"
+                    testid="last-name"
                     type="text"
                     {...lastname}
                 />
@@ -95,13 +97,14 @@ export default function Page() {
                     label="Email address"
                     name="email"
                     spaces={6}
+                    testid="email"
                     type="email"
                     {...email}
                 />
             </form>
 
             <div className="flex mb-6 items-center justify-end">
-                <Button loading={loading} onClick={onSubmit}>
+                <Button loading={loading} onClick={onSubmit} testid="save">
                     Save
                 </Button>
             </div>

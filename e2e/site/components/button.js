@@ -11,6 +11,7 @@ export default function Button(props) {
             className={`inline-flex min-w-[120px] justify-center items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 ${cursor}`}
             disabled={loading}
             onClick={props.onClick}
+            data-testid={props.testid}
             type="button"
         >
             {loading ? (

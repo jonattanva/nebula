@@ -23,6 +23,7 @@ export default function Input(props) {
                 <input
                     autoComplete={props.autoComplete}
                     className="block w-full rounded-md border-gray-300 border px-4 py-1.5 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
+                    data-testid={props.testid}
                     disabled={disabled}
                     name={props.name}
                     onChange={props.onChange}

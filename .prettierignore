@@ -1,3 +1,6 @@
-node_modules
-
+.eslintcache
 e2e/site/.next
+node_modules
+playwright-report
+pnpm-lock.yaml
+test-results

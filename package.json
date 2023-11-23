@@ -3,13 +3,12 @@
   "version": "0.0.1",
   "scripts": {
     "format": "prettier --write .",
-    "lint": "prettier --check . && eslint .",
-    "test:e2e": "npx playwright test"
+    "lint": "prettier --check . && eslint . --cache",
+    "site:build": "pnpm run --dir e2e/site build",
+    "site:dev": "pnpm run --dir e2e/site dev",
+    "test:e2e": "playwright test",
+    "test:ui": "playwright test --ui"
   },
-  "workspaces": [
-    "e2e/site",
-    "packages/*"
-  ],
   "devDependencies": {
     "@playwright/test": "~1.40.0",
     "esbuild": "~0.19.7",
@@ -24,6 +23,7 @@
     "type": "git",
     "url": "https://github.com/jonattanva/nebula.git"
   },
+  "packageManager": "pnpm@8.10.5",
   "exports": {
     "./package.json": "./package.json",
     "./offline": {

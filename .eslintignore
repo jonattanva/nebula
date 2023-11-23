@@ -1,8 +1,11 @@
 node_modules
 
+e2e/site
+
 packages/**/dist
 packages/**/esbuild.js
 
-e2e/site
-
+playwright-report
 playwright.config.js
+
+test-results

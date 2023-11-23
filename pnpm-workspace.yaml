@@ -1,0 +1,4 @@
+packages:
+    - 'e2e/site'
+    - 'packages/core'
+    - 'packages/offline'
