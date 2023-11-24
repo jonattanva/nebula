@@ -4,7 +4,7 @@
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "scripts": {
-    "build": "pnpm run clean && pnpm esbuild.js",
+    "build": "pnpm run clean && node esbuild.js",
     "clean": "rimraf dist"
   },
   "exports": {
