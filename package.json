@@ -5,6 +5,7 @@
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint . --cache",
     "site:build": "pnpm run --dir e2e/site build",
+    "site:start": "pnpm run --dir e2e/site start",
     "site:dev": "pnpm run --dir e2e/site dev",
     "test:e2e": "playwright test",
     "test:ui": "playwright test --ui"

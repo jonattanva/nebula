@@ -1,6 +1,15 @@
 .eslintcache
+
 e2e/site/.next
+e2e/site/public/workbox-*.js
+e2e/site/public/workbox-*.js.map
+e2e/site/public/sw.js
+e2e/site/public/sw.js.map
+e2e/site/public/fallback-*.js
+e2e/site/public/fallback-*.js.map
+
 node_modules
-playwright-report
 pnpm-lock.yaml
+
+playwright-report
 test-results

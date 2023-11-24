@@ -1,3 +1,4 @@
+.DS_Store
 .eslintcache
 
 node_modules
@@ -7,3 +8,5 @@ packages/**/node_modules
 
 playwright-report
 test-results
+
+.eslintcache
