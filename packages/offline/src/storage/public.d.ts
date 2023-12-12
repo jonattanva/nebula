@@ -18,3 +18,7 @@ export interface Connection<T extends Entity> {
     save(store: string, value: T): Promise<T>;
     select(store: string, query: Query): Promise<T[]>;
 }
+
+export type Preference = {
+    priority: 'online' | 'offline';
+};

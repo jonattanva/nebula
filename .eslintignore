@@ -9,3 +9,5 @@ playwright-report
 playwright.config.js
 
 test-results
+
+example.js

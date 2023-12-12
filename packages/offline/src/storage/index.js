@@ -141,7 +141,6 @@ const open = (name, version) => {
         }
 
         const request = indexedDB.open(name, version);
-
         request.onsuccess = (event) => {
             resolve(event.target);
         };
