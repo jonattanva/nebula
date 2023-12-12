@@ -1,1 +1,1 @@
-export { getConnection } from './storage';
+export { getDispatch } from './storage';

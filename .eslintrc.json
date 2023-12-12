@@ -15,6 +15,12 @@
     "es6": true
   },
   "rules": {
-    "jsdoc/require-returns-description": "off"
+    "jsdoc/require-returns-description": "off",
+    "jsdoc/no-undefined-types": [
+      1,
+      {
+        "definedTypes": ["RequestInit", "RequestInfo"]
+      }
+    ]
   }
 }

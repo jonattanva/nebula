@@ -1,16 +1,17 @@
-import { QUEUES } from '../constants.js';
-import { getConnection } from './index.js';
+import { QUEUES, OFFLINE } from '../constant.js';
+import { getConnection } from './connection.js';
 import { seed } from 'nebula-core';
 
 /**
- * @param {import('./public.js').Preference} prefrence
+ * @param {import('./public.js').Preference} preference
+ *          The storage preferences
  * @returns {*}
  */
-const getDispatch = (prefrence) => {
+const getDispatch = (preference) => {
     const connection = getConnection('demo');
     return {
         queue: function (input, init) {
-            return queue(input, init, prefrence, connection);
+            return queue(input, init, preference, connection);
         }
     };
 };
@@ -18,14 +19,17 @@ const getDispatch = (prefrence) => {
 /**
  * @template {import('./public.js').Entity} T
  * @param {RequestInfo | URL} input
+ *          A string or any other object with a stringifier — including a URL object — that provides the URL of the resource you want to fetch.
  * @param {RequestInit} init
- * @param {import('./public.js').Preference} prefrence
+ *          An object containing any custom settings you want to apply to the request.
+ * @param {import('./public.js').Preference} preference
+ *          The storage preferences
  * @param {import('./public.js').Connection<T>} connection
  *          The connection database
  * @returns {Promise<T>}
  */
-function queue(input, init, prefrence, connection) {
-    if (prefrence.priority === 'offline') {
+function queue(input, init, preference, connection) {
+    if (preference.priority === OFFLINE) {
         return save({ input, init }, connection);
     }
     return window.fetch(input, init);
